@@ -31,4 +31,8 @@ const vendorAData = [
   }
 ];
 
-module.exports = vendorAData;
+const getDataVendorA = () => {
+    return vendorAData;
+};
+
+module.exports = { getDataVendorA };

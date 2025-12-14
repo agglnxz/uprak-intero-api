@@ -1,6 +1,3 @@
-// src/vendors/vendorB.js
-
-// Output JSON Vendor B (Distro Modern)
 const vendorBData = [
   {
     "sku": "TSHIRT-001",
@@ -16,4 +13,8 @@ const vendorBData = [
   }
 ];
 
-module.exports = vendorBData;
+const getDataVendorB = () => {
+    return vendorBData;
+}
+
+module.exports = {getDataVendorB};
