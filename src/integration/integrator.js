@@ -6,15 +6,15 @@ const { getDataVendorC } = require('../vendors/vendorC');
 const getAllProducts = () => {
     // --- PROSES DATA VENDOR A (Warung Legacy) ---
     const dataA = getDataVendorA().map(item => {
-        // Soal: Diskon 10% untuk Vendor A 
-        // Soal: Pastikan harga menjadi Integer (Type Safety) 
+        // Diskon 10% untuk Vendor A 
+        // Pastikan harga menjadi Integer (Type Safety) 
         const hargaAsli = parseInt(item.hrg);
         const hargaDiskon = hargaAsli - (hargaAsli * 0.10);
 
         return {
             id: item.kd_produk,
             nama: item.nm_brg,
-            harga_final: Math.floor(hargaDiskon), // Pastikan integer
+            harga_final: Math.floor(hargaDiskon), // Pastikan harga final adalah Integer
             status: item.ket_stok === "ada" ? "Tersedia" : "Habis", // Normalisasi status
             sumber: "Vendor A"
         };
@@ -33,13 +33,13 @@ const getAllProducts = () => {
 
     // --- PROSES DATA VENDOR C (Resto & Kuliner) ---
     const dataC = getDataVendorC().map(item => {
-        // Soal: Jika kategori 'Food', tambah text "(Recommended)" 
+        // Jika kategori 'Food', tambah text "(Recommended)" 
         let namaProduk = item.details.name;
         if (item.details.category === 'Food') {
             namaProduk += " (Recommended)";
         }
 
-        // Soal: Harga Final (Base Price + Tax)
+        // Harga Final (Base Price + Tax)
         const totalHarga = item.pricing.base_price + item.pricing.tax;
 
         return {
