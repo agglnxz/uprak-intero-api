@@ -1,7 +1,3 @@
-const express = require("express");
-const router = express.Router();
-
-// Data simulasi Vendor C (Resto & Kuliner) - sesuai spesifikasi UAS
 const vendorCData = [
   {
     "id": 501,
@@ -41,6 +37,8 @@ const vendorCData = [
   }
 ];
 
+const getDataVendorC = () => {
+    return vendorCData;
+}
 
-
-module.exports = vendorCData;
+module.exports = {getDataVendorC};
