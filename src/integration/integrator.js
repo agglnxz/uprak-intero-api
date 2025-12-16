@@ -7,14 +7,14 @@ const getAllProducts = () => {
     // --- PROSES DATA VENDOR A (Warung Legacy) ---
     const dataA = getDataVendorA().map(item => {
         // Diskon 10% untuk Vendor A 
-        // Pastikan harga menjadi Integer (Type Safety) 
+        // parsing harga menjadi Integer
         const hargaAsli = parseInt(item.hrg);
         const hargaDiskon = hargaAsli - (hargaAsli * 0.10);
 
         return {
             id: item.kd_produk,
             nama: item.nm_brg,
-            harga_final: Math.floor(hargaDiskon), // Pastikan harga final adalah Integer
+            harga_final: Math.floor(hargaDiskon), // harga final Integer
             status: item.ket_stok === "ada" ? "Tersedia" : "Habis", // Normalisasi status
             sumber: "Vendor A"
         };
@@ -43,7 +43,7 @@ const getAllProducts = () => {
         const totalHarga = item.pricing.base_price + item.pricing.tax;
 
         return {
-            id: item.id.toString(), // Samakan jadi string agar konsisten
+            id: item.id.toString(), 
             nama: namaProduk,
             harga_final: totalHarga,
             status: item.stock > 0 ? "Tersedia" : "Habis",
